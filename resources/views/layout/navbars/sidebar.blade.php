@@ -110,7 +110,7 @@
                 @endif
                 <li class="nav-item">
                     <a class="nav-link" href="#users" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fas fa-users" style="color:#5e72e4;"></i>
+                        <i class="fas fa-user" style="color:#5e72e4;"></i>
                         <span class="nav-link-text">{{ __('Users') }}</span>
                     </a>
 
@@ -134,7 +134,12 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="fab fa-discourse text-blue"></i></i> {{ __('Courses') }}
+                       <i class="fas fa-chalkboard text-blue"></i></i> {{ __('Courses') }}
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="/admin/tracks">
+                       <i class="fas fa-list-ul text-blue"></i></i></i> {{ __('Tracks') }}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -144,22 +149,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="fas fa-question-circle text-blue"></i></i> {{ __('Quistions') }}
+                        <i class="fas fa-question text-blue"></i></i> {{ __('Quistions') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="far fa-clipboard text-blue"></i></i> {{ __('Quizzess') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-key-25 text-info"></i> {{ __('Login') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}
                     </a>
                 </li>
             </ul>
