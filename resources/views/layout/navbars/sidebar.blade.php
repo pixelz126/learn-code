@@ -143,18 +143,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="admin/videos">
+                    <a class="nav-link" href="/admin/videos">
                         <i class="fas fa-video text-blue"></i></i> {{ __('Videos') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-question text-blue"></i></i> {{ __('Quistions') }}
+                    <a class="nav-link" href="/admin/quizzes">
+                        <i class="far fa-clipboard text-blue"></i></i> {{ __('Quizzes') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="far fa-clipboard text-blue"></i></i> {{ __('Quizzess') }}
+                    <a class="nav-link" href="/admin/questions">
+                        <i class="fas fa-question text-blue"></i></i> {{ __('Questions') }}
                     </a>
                 </li>
             </ul>

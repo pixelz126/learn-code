@@ -37,6 +37,12 @@ Route::group(['middleware' => ['auth', 'admin'] ], function () {
 
 	Route::resource('/admin/courses', 'Admin\CourseController');
 
+	Route::resource('/admin/videos', 'Admin\VideoController');
+
+	Route::resource('/admin/quizzes', 'Admin\QuizController');
+	
+	Route::resource('/admin/questions', 'Admin\QuestionController');
+
 	Route::get('/admin/profile', ['as' => 'profile.edit', 'uses' => 'Admin\ProfileController@edit']);
 
 	Route::put('/admin/profile', ['as' => 'profile.update', 'uses' => 'Admin\ProfileController@update']);
