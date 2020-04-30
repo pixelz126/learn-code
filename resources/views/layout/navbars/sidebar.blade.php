@@ -133,7 +133,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/admin/courses">
                        <i class="fas fa-chalkboard text-blue"></i></i> {{ __('Courses') }}
                     </a>
                 </li>
@@ -143,7 +143,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="admin/videos">
                         <i class="fas fa-video text-blue"></i></i> {{ __('Videos') }}
                     </a>
                 </li>
