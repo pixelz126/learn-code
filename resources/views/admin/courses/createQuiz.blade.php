@@ -1,7 +1,7 @@
-@extends('layout.app', ['title' => __('Video Management')])
+@extends('layout.app', ['title' => __('Quiz Management')])
 
 @section('content')
-    @include('admin.users.partials.header', ['title' => __('Add video')])   
+    @include('admin.users.partials.header', ['title' => __('Quiz video')])   
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,50 +10,36 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Video Management') }}</h3>
+                                <h3 class="mb-0">{{ __('Quiz Management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('videos.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                <a href="{{ route('quizzes.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('videos.store') }}" autocomplete="off">
+                        <form method="post" action="{{ route('quizzes.store') }}" autocomplete="off">
                             @csrf
-                            <h6 class="heading-small text-muted mb-4">{{ __('Video information') }}</h6>
+                            <h6 class="heading-small text-muted mb-4">{{ __('Quiz information') }}</h6>
 
                             <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('title') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-title">{{ __('Video title') }}</label>
-                                    <input type="text" name="title" id="input-title" class="form-control form-control-alternative{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="{{ __('Enter video title') }}" value="{{ old('title') }}" required autofocus>
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-name">{{ __('Quiz name') }}</label>
+                                    <input type="text" name="name" id="input-title" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Enter quiz name') }}" value="{{ old('name') }}" required autofocus>
 
-                                     @if ($errors->has('title'))
+                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('title') }}</strong>
+                                            <strong>{{ $errors->first('name') }}</strong>
                                         </span>
                                     @endif
                                 
-                                </div>
-
-
-                                <div class="form-group{{ $errors->has('link') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-link">{{ __('Video link') }}</label>
-                                    <input type="text" name="link" id="input-link" class="form-control form-control-alternative{{ $errors->has('link') ? ' is-invalid' : '' }}" placeholder="{{ __('https://www.example.com/embed/?v=wuvHO5lGVFE') }}" value="{{ old('link') }}" required>
-
-                                    @if ($errors->has('link'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('link') }}</strong>
-                                        </span>
-                                    @endif
                                 </div>
 
                               <div class="form-group{{ $errors->has('course_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-course_id">{{ __('Course name') }}</label>
                                     
                                     <select name="course_id" required class="form-control">
-                                        @foreach(\App\Course::orderBy('id','desc')->get() as $course)
                                         <option value="{{$course->id}}"> {{$course->title}} </option>
-                                        @endforeach
                                     </select>
 
                                     @if ($errors->has('course_id'))

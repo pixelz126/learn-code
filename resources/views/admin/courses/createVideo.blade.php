@@ -51,9 +51,8 @@
                                     <label class="form-control-label" for="input-course_id">{{ __('Course name') }}</label>
                                     
                                     <select name="course_id" required class="form-control">
-                                        @foreach(\App\Course::orderBy('id','desc')->get() as $course)
+                                      
                                         <option value="{{$course->id}}"> {{$course->title}} </option>
-                                        @endforeach
                                     </select>
 
                                     @if ($errors->has('course_id'))

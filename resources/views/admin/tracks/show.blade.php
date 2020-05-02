@@ -8,14 +8,16 @@
             <div class="col">
                 <div class="card shadow">
                      <div class="card-header border-0">
+                            <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Courses') }}</h3>
+                                <h3 class="mb-0">{{ $track->name }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('courses.create') }}" class="btn btn-sm btn-primary">{{ __('Add Course') }}</a>
+                                <a href="/admin/tracks/{{ $track->id}}/courses/create" class="btn btn-sm btn-primary">{{ __('Add course') }}</a>
                             </div>
                         </div>
+                    </div>
                     </div>
                    @include('includes.errors')
                     <div class="col-12">
@@ -29,10 +31,10 @@
                         @endif
                     </div>
     
-                    @if(count($courses))
+                    @if(count($track->courses))
 
                     <div class="row p-1">
-                        @foreach($courses as $course)
+                        @foreach($track->courses as $course)
                         <div class="col-sm-4 mt-2">
                             <div class="card" style="width: 18rem;">
                             @if($course->photo)
@@ -62,11 +64,7 @@
                     @else
                     <p class="lead text-center">No Courses Fonud</p>s
                     @endif
-                    <div class="card-footer py-4">
-                        <nav class="d-flex justify-content-end" aria-label="...">
-                            {{ $courses->links() }}
-                        </nav>
-                    </div>
+               
                 </div>
             </div>
         </div>

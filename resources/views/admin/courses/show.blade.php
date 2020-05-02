@@ -1,54 +1,73 @@
-@extends('layout.app', ['title' => __('Videos Management')])
+@extends('layout.app', ['title' => __('Course Management')])
 
 @section('content')
-    @include('layout.headers.cards')
+    @include('admin.users.partials.header', ['title' => __('Course list')])   
 
     <div class="container-fluid mt--7">
         <div class="row">
-            <div class="col">
-                <div class="card shadow">
-                    <div class="card-header border-0">
+            <div class="col-xl-12 order-xl-1">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Videos') }}</h3>
+                                <h3 class="mb-0">{{ __('Course Management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('videos.create') }}" class="btn btn-sm btn-primary">{{ __('Add video') }}</a>
+                                <a href="{{ route('courses.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="col-12">
-                        @if (session('status'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ session('status') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                @if($course->photo)
+                               <img src="/images/{{ $course->photo->filename }}" class="card-img-top" alt="Course image">
+                                @else
+                                <img src="/images/1.jpg" class="card-img-top" alt="Course image">
+                                @endif
                             </div>
-                        @endif
+                            <div class="col-6">
+                                <h3>{{ $course->title }}</h3>
+                                <h5> <a href="/admin/tracks/{{ $course->track->id}}">{{ $course->track->name }}</a></h5>
+                                <span class="{{ $course->status == 0 ? 'text-info' : 'text-danger' }}"> {{ $course->status == 0 ? 'FREE' : 'PAID' }}</span>
+                            </div>
+                        </div>                     
                     </div>
 
-                    <div class="table-responsive">
+                </div>
+
+                <div class="table-responsive">
+
+
+                    <div class="card-header bg-white border-0 mt-3">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h2 class="mb-0">{{ __('Videos list') }}</h2>
+                            </div>
+                            <div class="col-4 text-right pull-right">
+                                <a href="/admin/courses/{{ $course->id }}/videos/create" class="btn btn-sm btn-primary">{{ __('Add video') }}</a>
+                                <a href="/admin/courses/{{ $course->id }}/quizzes/create" class="btn btn-sm btn-success">{{ __('Add Quiz') }}</a>
+                            </div>
+                          
+                        </div>
+                    </div>
+
+
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">{{ __('Title') }}</th>
-                                    <th scope="col">{{ __('Course name') }}</th>
+                                    <th scope="col">{{ __('Videos list') }}</th>
                                     <th scope="col">{{ __('Creation date') }}</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($videos as $video)
+                                @foreach ($course->videos as $video)
                                     <tr>
                                         <td>
                                             <a href="/admin/videos/{{$video->id}}">
                                                 {{ $video->title }}
                                             </a>
-                                        </td>
-                                        <td>
-                                            <a href="/admin/courses/{{ $video->course->id }}">{{ $video->course->title }}</a>
                                         </td>
                                         <td>{{ $video->created_at->diffForHumans() }}</td>
                                         <td class="text-right">
@@ -76,15 +95,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-footer py-4">
-                        <nav class="d-flex justify-content-end" aria-label="...">
-                            {{ $videos->links() }}
-                        </nav>
-                    </div>
-                </div>
+
+
             </div>
         </div>
-            
+        
         @include('layout.footers.auth')
     </div>
 @endsection

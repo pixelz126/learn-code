@@ -43,13 +43,19 @@
                             <tbody>
                                 @foreach ($quizzes as $quiz)
                                     <tr>
-                                        <td>{{ $quiz->name }}</td>
-                                        @if($quiz->question)
+                                        <td>
+                                            <a href="{{ route('quizzes.show', $quiz) }}">
+                                                {{ $quiz->name }}
+                                            </a>
+                                        </td>
+
                                         <td>{{ count($quiz->questions) }}</td>
-                                        @endif
+                                     
+
                                         <td>
                                             <a href="/admin/courses/{{ $quiz->course->id }}">{{ $quiz->course->title }}</a>
                                         </td>
+
                                         <td>{{ $quiz->created_at->diffForHumans() }}</td>
                                         <td class="text-right">
                                             <div class="dropdown">
