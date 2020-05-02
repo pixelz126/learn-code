@@ -1,7 +1,7 @@
 @extends('layout.app', ['title' => __('Quiz Management')])
 
 @section('content')
-    @include('admin.users.partials.header', ['title' => __('Quiz video')])   
+    @include('admin.users.partials.header', ['title' => __('Quiz')])   
 
     <div class="container-fluid mt--7">
         <div class="row">

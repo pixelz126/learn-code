@@ -39,8 +39,8 @@
                                 <div class="form-group{{ $errors->has('answers') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-answers">{{ __('Answers') }}</label>
 
-                                    <input type="text"  name="answers" id="input-answers" class="form-control form-control-alternative{{ $errors->has('answers') ? ' is-invalid' : '' }}"  placeholder="{{ __('Enter answer') }}" value="{{ old('answers') }}"  required > 
-                                    
+                                    <textarea  name="answers" id="input-answers" class="form-control form-control-alternative{{ $errors->has('answers') ? ' is-invalid' : '' }}"  placeholder="{{ __('Enter answer') }}"  required > 
+                                    {{ old('answers') }}</textarea>
 
                                      @if ($errors->has('answers'))
                                         <span class="invalid-feedback" role="alert">
@@ -86,10 +86,10 @@
                                 <div class="form-group{{ $errors->has('quiz_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-quiz_id">{{ __('Quiz name') }}</label>
                                     
-                                    <select  name="quiz_id" required class="form-control">
-                                        
+                                    <select name="quiz_id" required class="form-control">
+                                        @foreach(\App\Quiz::orderBy('id','desc')->get() as $quiz)
                                         <option value="{{$quiz->id}}"> {{$quiz->name}} </option>
-                                       
+                                        @endforeach
                                     </select>
 
                                     @if ($errors->has('quiz_id'))
